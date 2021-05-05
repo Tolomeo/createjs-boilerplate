@@ -14,7 +14,7 @@ module.exports = {
     createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
     app: path.join(rootPath, "/app.js"),
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -28,15 +28,12 @@ module.exports = {
   },
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: "ts-loader", exclude: /node_modules/ },
+      { test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
       },
       {
         test: /node_modules(\/|\\)(createjs)(\/|\\).*\.js$/,
@@ -58,6 +55,7 @@ module.exports = {
     new ESLintPlugin(),
   ],
   resolve: {
+    extensions: [".tsx", ".ts", ".js"],
     alias: {
       "@": rootPath,
       "@createjs/EaselJS": path.resolve(rootPath, "createjs"),
