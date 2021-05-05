@@ -1,7 +1,7 @@
 {
   "name": "createjs-boilerplate",
   "version": "1.0.0",
-  "main": "source/app.js",
+  "main": "src/app.js",
   "repository": "git@github.com:szymkab/createjs-boilerplate.git",
   "author": "Szymon Kabelis",
   "license": "MIT",

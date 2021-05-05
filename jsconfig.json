@@ -3,8 +3,8 @@
     "baseUrl": ".",
     "module": "commonjs",
     "paths": {
-      "@createjs/*": ["./source/createjs.js"],
-      "@/*": ["./source/*"]
+      "@createjs/*": ["./src/createjs.js"],
+      "@/*": ["./src/*"]
     }
   }
 }

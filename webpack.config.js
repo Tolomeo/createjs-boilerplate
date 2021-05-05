@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
-const rootPath = path.resolve(__dirname, "source");
+const rootPath = path.resolve(__dirname, "src");
 const nodeModulesPath = path.resolve(__dirname, "node_modules");
 
 module.exports = {
