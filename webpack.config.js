@@ -12,7 +12,7 @@ module.exports = {
   mode: "development",
   entry: {
     createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
-    app: path.join(rootPath, "/app.js"),
+    app: path.join(rootPath, "/app.ts"),
   },
   devtool: "source-map",
   output: {
@@ -58,7 +58,6 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
       "@": rootPath,
-      "@createjs/EaselJS": path.resolve(rootPath, "createjs"),
       "@createjs": path.resolve(rootPath, "createjs"),
     },
   },

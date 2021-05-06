@@ -11,10 +11,10 @@
     "allowJs": true,
     "esModuleInterop": true,
     "paths": {
-      "@createjs/*": ["./src/createjs.js"],
+      "@createjs": ["./src/createjs.ts"],
       "@/*": ["./src/*"]
     }
   },
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules", "**/*.(spec|test).ts"]
 }

@@ -1,9 +1,11 @@
+import createjs from "@createjs";
 import { CONFIG } from "@/config";
 
 export const calculateScale = () =>
   Math.min(window.innerWidth / CONFIG.canvasWidth, window.innerHeight / CONFIG.canvasHeight);
 
-export const handleResize = (canvas, stage) => {
+// eslint-disable-next-line no-undef
+export const handleResize = (canvas: HTMLCanvasElement, stage: createjs.Stage) => {
   const scale = calculateScale();
 
   const width = CONFIG.canvasWidth * scale;
