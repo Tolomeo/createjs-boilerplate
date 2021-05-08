@@ -52,10 +52,12 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
-    new ESLintPlugin(),
+    new ESLintPlugin({
+      extensions: [".js", ".ts"],
+    }),
   ],
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".js", ".ts"],
     alias: {
       "@": rootPath,
       "@createjs": path.resolve(rootPath, "createjs"),
