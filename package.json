@@ -23,6 +23,7 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@types/createjs": "^0.0.29",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
     "babel-core": "^7.0.0-bridge",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
