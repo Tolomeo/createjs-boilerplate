@@ -16,5 +16,5 @@
     "import/prefer-default-export": "warn",
     "@typescript-eslint/ban-types": "off"
   },
-  "ignorePatterns": ["webpack.config.js"]
+  "ignorePatterns": ["webpack.config.js", "jest.config.js"]
 }
