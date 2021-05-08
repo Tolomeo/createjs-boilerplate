@@ -8,17 +8,17 @@ import "./styles.css";
 
 const init = () => {
   const body = document.getElementsByTagName("body")[0];
-  const canvas = createDOMStage();
-  body.append(canvas);
+  body.append(createDOMStage());
 
   window.onload = () => {
     createjs.Ticker.framerate = CONFIG.framerate;
-    createjs.Ticker.on("tick", () => {
-      stage.update();
-    });
 
     const canvas = getDOMStage();
     const stage = new createjs.Stage(canvas);
+
+    createjs.Ticker.on("tick", () => {
+      stage.update();
+    });
 
     const graphics = new createjs.Graphics()
       .beginFill("#EBE97A")

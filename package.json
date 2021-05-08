@@ -13,7 +13,7 @@
     "lint-staged": "lint-staged",
     "test": "jest",
     "presetup": "yarn add shelljs",
-    "setup": "node ./setup.js"
+    "setup": "node ./scripts/setup.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
