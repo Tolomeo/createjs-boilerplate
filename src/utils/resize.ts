@@ -5,7 +5,6 @@ import { CONFIG } from "@/config";
 export const calculateScale = () =>
   Math.min(window.innerWidth / CONFIG.canvasWidth, window.innerHeight / CONFIG.canvasHeight);
 
-// eslint-disable-next-line no-undef
 export const handleResize = (canvas: HTMLCanvasElement, stage: createjs.Stage) => {
   const scale = calculateScale();
 

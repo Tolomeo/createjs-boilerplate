@@ -1,4 +1,3 @@
-import "./polyfills";
 import createjs from "@createjs";
 import { createDOMStage, getDOMStage, handleResize } from "@/utils";
 
@@ -27,7 +26,7 @@ const init = () => {
     shape.regX = 190;
     shape.regY = 50;
 
-    const welcomeText = new createjs.Text("CreateJS Boslerplate", "26px Courier", "#EB4646");
+    const welcomeText = new createjs.Text("CreateJS Boilerplate", "26px Courier", "#EB4646");
     welcomeText.regX = welcomeText.getBounds().width / 2;
     welcomeText.regY = welcomeText.getBounds().height / 2;
     welcomeText.x = CONFIG.canvasWidth / 2;
