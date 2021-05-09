@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
-const rootPath = path.resolve(__dirname, "source");
+const rootPath = path.resolve(__dirname, "src");
 const nodeModulesPath = path.resolve(__dirname, "node_modules");
 
 module.exports = {
@@ -12,9 +12,9 @@ module.exports = {
   mode: "development",
   entry: {
     createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
-    app: path.join(rootPath, "/app.js"),
+    app: path.join(rootPath, "/app.ts"),
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -28,15 +28,12 @@ module.exports = {
   },
   module: {
     rules: [
+      { test: /\.ts$/, loader: "ts-loader", exclude: /node_modules/ },
+      { test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
       },
       {
         test: /node_modules(\/|\\)(createjs)(\/|\\).*\.js$/,
@@ -55,12 +52,14 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
-    new ESLintPlugin(),
+    new ESLintPlugin({
+      extensions: [".js", ".ts"],
+    }),
   ],
   resolve: {
+    extensions: [".js", ".ts"],
     alias: {
       "@": rootPath,
-      "@createjs/EaselJS": path.resolve(rootPath, "createjs"),
       "@createjs": path.resolve(rootPath, "createjs"),
     },
   },
