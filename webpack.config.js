@@ -1,9 +1,9 @@
 const path = require("path");
-
+// plugins
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
-
+// paths
 const srcPath = path.resolve(__dirname, "src");
 const htmlPath = path.resolve(__dirname, "html");
 const distPath = path.resolve(__dirname, "dist");
@@ -45,12 +45,8 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        test: /\.(png|jpe?g|gif|ico)$/i,
+        loader: "file-loader",
       },
     ],
   },
