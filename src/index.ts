@@ -3,6 +3,7 @@ import "./styles.css";
 
 const init = () => {
   const app = new App(App.getStage());
+
   app.initialise();
 };
 
