@@ -1,4 +1,4 @@
-type Configuration = {
+type GameOptions = {
     canvasWidth: number;
     canvasHeight: number
 }
@@ -6,11 +6,11 @@ type Configuration = {
 class Game {
   private stage: createjs.Stage;
   
-  private config: Configuration;
+  private options: GameOptions;
 
-  constructor(stage: createjs.Stage, config: Configuration) {
+  constructor(stage: createjs.Stage, options: GameOptions) {
     this.stage = stage;
-    this.config = config;
+    this.options = options;
 
     this.initialise();
   }
@@ -18,7 +18,7 @@ class Game {
   private initialise() {
     const graphics = new createjs.Graphics()
       .beginFill("#EBE97A")
-      .drawRect(this.config.canvasWidth / 2, this.config.canvasHeight / 2, 380, 100);
+      .drawRect(this.options.canvasWidth / 2, this.options.canvasHeight / 2, 380, 100);
     const shape = new createjs.Shape(graphics);
     shape.regX = 190;
     shape.regY = 50;
@@ -26,8 +26,8 @@ class Game {
     const welcomeText = new createjs.Text("CreateJS Boilerplate", "26px Courier", "#EB4646");
     welcomeText.regX = welcomeText.getBounds().width / 2;
     welcomeText.regY = welcomeText.getBounds().height / 2;
-    welcomeText.x = this.config.canvasWidth / 2;
-    welcomeText.y = this.config.canvasHeight / 2;
+    welcomeText.x = this.options.canvasWidth / 2;
+    welcomeText.y = this.options.canvasHeight / 2;
 
     this.stage.addChild(shape, welcomeText);
   }

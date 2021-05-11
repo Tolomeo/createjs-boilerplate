@@ -4,30 +4,41 @@ import { CONFIG } from "@/config";
 import Game from "./game";
 import "./styles.css";
 
-const getCanvas = () => {
-  const canvas = document.getElementById("stage");
+class App {
+  static getStage() {
+    const canvas = document.getElementById("stage");
 
-  if (!canvas) {
-    throw new Error("Stage element not found");
+    if (!canvas) {
+      throw new Error("Stage element not found");
+    }
+
+    return canvas as HTMLCanvasElement;
   }
 
-  return canvas as HTMLCanvasElement;
-};
+  public canvas: HTMLCanvasElement;
 
-const init = () => {
-  const canvas = getCanvas();
-  const stage = new createjs.Stage(canvas);
+  private stage: createjs.Stage;
 
-  createjs.Ticker.framerate = CONFIG.framerate;
+  private game: Game | null;
 
-  createjs.Ticker.on("tick", () => {
-    stage.update();
-  });
+  constructor(canvas: HTMLCanvasElement) {
+    this.canvas = canvas;
+    this.stage = new createjs.Stage(this.canvas);
+    this.game = null;
+  }
 
-  handleResize(canvas, stage);
-  window.onresize = () => handleResize(canvas, stage);
+  public initialise() {
+    createjs.Ticker.framerate = CONFIG.framerate;
 
-  return new Game(stage, CONFIG);
-};
+    createjs.Ticker.on("tick", () => {
+      this.stage.update();
+    });
 
-document.addEventListener("DOMContentLoaded", init);
+    handleResize(this.canvas, this.stage);
+    window.onresize = () => handleResize(this.canvas, this.stage);
+
+    this.game = new Game(this.stage, CONFIG);
+  }
+}
+
+export default App;

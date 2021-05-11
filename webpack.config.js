@@ -14,7 +14,7 @@ module.exports = {
   mode: "development",
   entry: {
     createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
-    app: path.join(srcPath, "/app.ts"),
+    app: path.join(srcPath, "/index.ts"),
   },
   devtool: "source-map",
   output: {
