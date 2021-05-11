@@ -1,39 +1,33 @@
 import createjs from "@createjs";
-import { getDOMStage, handleResize } from "@/utils";
-
+import { handleResize } from "@/utils";
 import { CONFIG } from "@/config";
-
+import Game from "./game";
 import "./styles.css";
 
-const init = () => {
-  window.onload = () => {
-    createjs.Ticker.framerate = CONFIG.framerate;
+const getCanvas = () => {
+  const canvas = document.getElementById("stage");
 
-    const canvas = getDOMStage();
-    const stage = new createjs.Stage(canvas);
+  if (!canvas) {
+    throw new Error("Stage element not found");
+  }
 
-    createjs.Ticker.on("tick", () => {
-      stage.update();
-    });
-
-    const graphics = new createjs.Graphics()
-      .beginFill("#EBE97A")
-      .drawRect(CONFIG.canvasWidth / 2, CONFIG.canvasHeight / 2, 380, 100);
-    const shape = new createjs.Shape(graphics);
-    shape.regX = 190;
-    shape.regY = 50;
-
-    const welcomeText = new createjs.Text("CreateJS Boilerplate", "26px Courier", "#EB4646");
-    welcomeText.regX = welcomeText.getBounds().width / 2;
-    welcomeText.regY = welcomeText.getBounds().height / 2;
-    welcomeText.x = CONFIG.canvasWidth / 2;
-    welcomeText.y = CONFIG.canvasHeight / 2;
-
-    stage.addChild(shape, welcomeText);
-
-    handleResize(canvas, stage);
-    window.onresize = () => handleResize(canvas, stage);
-  };
+  return canvas as HTMLCanvasElement;
 };
 
-init();
+const init = () => {
+  const canvas = getCanvas();
+  const stage = new createjs.Stage(canvas);
+
+  createjs.Ticker.framerate = CONFIG.framerate;
+
+  createjs.Ticker.on("tick", () => {
+    stage.update();
+  });
+
+  handleResize(canvas, stage);
+  window.onresize = () => handleResize(canvas, stage);
+
+  return new Game(stage, CONFIG);
+};
+
+document.addEventListener("DOMContentLoaded", init);
