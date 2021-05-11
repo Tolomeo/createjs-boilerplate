@@ -18,6 +18,10 @@ class App {
     return Math.min(window.innerWidth / CONFIG.canvasWidth, window.innerHeight / CONFIG.canvasHeight);
   }
 
+  static getDevicePixelRatio() {
+    return window.devicePixelRatio;
+  }
+
   public canvas: HTMLCanvasElement;
 
   private stage: createjs.Stage;
@@ -42,7 +46,7 @@ class App {
     });
 
     this.resize();
-    
+
     window.addEventListener("resize", () => {
       this.resize();
     });
@@ -51,17 +55,20 @@ class App {
   }
 
   public resize() {
-    const scale = App.getStageScale();
-    const width = CONFIG.canvasWidth * scale;
-    const height = CONFIG.canvasHeight * scale;
+    const stageScale = App.getStageScale();
+    const devicePxRatio = App.getDevicePixelRatio();
+    const scaledWidth = CONFIG.canvasWidth * stageScale;
+    const scaledHeight = CONFIG.canvasHeight * stageScale;
+    // the canvas css dimensions are scaled to meet the viewport dimensions
+    this.canvas.style.width = `${scaledWidth}px`;
+    this.canvas.style.height = `${scaledHeight}px`;
+    // the canvas intrinsic dimensions are instead scaled to match the device pixels in the viewport dimensions
+    this.canvas.width = scaledWidth * devicePxRatio;
+    this.canvas.height = scaledHeight * devicePxRatio;
+    // the stage is scaled to match the scale of the canvas intrinsic dimensions
+    this.stage.scaleX = stageScale * devicePxRatio;
+    this.stage.scaleY = stageScale * devicePxRatio;
 
-    this.canvas.width = width;
-    this.canvas.height = height;
-    this.canvas.style.width = `${width}px`;
-    this.canvas.style.height = `${height}px`;
-
-    this.stage.scaleX = scale;
-    this.stage.scaleY = scale;
   }
 }
 
