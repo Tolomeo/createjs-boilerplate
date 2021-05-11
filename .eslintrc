@@ -1,12 +1,9 @@
 {
   "extends": ["airbnb-typescript/base", "plugin:jest/recommended", "plugin:promise/recommended", "prettier"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.eslint.json"
   },
-  "env": {
-    "browser": true,
-    "jest": true
-  },
+  "env": { "browser": true, "jest": true },
   "globals": {
     "module": true
   },
@@ -16,5 +13,5 @@
     "import/prefer-default-export": "warn",
     "@typescript-eslint/ban-types": "off"
   },
-  "ignorePatterns": ["*.js", "*.json", "scripts/*", "dist/*"]
+  "ignorePatterns": ["node_modules", "dist"]
 }

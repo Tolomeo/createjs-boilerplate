@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 
 const shell = require("shelljs");
 const { exec } = require("child_process");
@@ -16,7 +18,6 @@ const callback = (string) => (err) => {
     throw err;
   }
 
-  // eslint-disable-next-line
   console.log(string);
 };
 
