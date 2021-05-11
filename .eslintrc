@@ -3,9 +3,7 @@
   "parserOptions": {
     "project": "./tsconfig.eslint.json"
   },
-  "env":{    "browser": true,
-    "jest": true
-  },
+  "env": { "browser": true, "jest": true },
   "globals": {
     "module": true
   },
@@ -13,7 +11,7 @@
     "arrow-body-style": "warn",
     "jest/no-mocks-import": "off",
     "import/prefer-default-export": "warn",
-    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/ban-types": "off"
   },
   "ignorePatterns": ["node_modules", "dist"]
 }
