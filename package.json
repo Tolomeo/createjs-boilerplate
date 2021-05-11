@@ -17,7 +17,8 @@
     "setup": "node ./scripts/setup.js"
   },
   "dependencies": {
-    "createjs": "^1.0.1"
+    "createjs": "^1.0.1",
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@types/createjs": "^0.0.29",
