@@ -2,9 +2,8 @@ import App from "./app";
 import "./styles.css";
 
 const init = () => {
-  const app = new App(App.getStage());
-
-  app.initialise();
+  const stage = App.getDOMStage();
+  return new App(stage).initialise();
 };
 
 document.addEventListener("DOMContentLoaded", init);
