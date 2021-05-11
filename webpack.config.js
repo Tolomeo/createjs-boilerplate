@@ -4,23 +4,25 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
-const rootPath = path.resolve(__dirname, "src");
+const srcPath = path.resolve(__dirname, "src");
+const htmlPath = path.resolve(__dirname, "html");
+const distPath = path.resolve(__dirname, "dist");
 const nodeModulesPath = path.resolve(__dirname, "node_modules");
 
 module.exports = {
-  context: rootPath,
+  context: srcPath,
   mode: "development",
   entry: {
     createjs: path.join(nodeModulesPath, "/createjs/builds/createjs-2015.11.26.combined.js"),
-    app: path.join(rootPath, "/app.ts"),
+    app: path.join(srcPath, "/app.ts"),
   },
   devtool: "source-map",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
+    path: distPath,
+    filename: "[name].[contenthash:8].js",
   },
   devServer: {
-    contentBase: rootPath,
+    contentBase: srcPath,
     open: true,
     stats: {
       warnings: false,
@@ -42,15 +44,24 @@ module.exports = {
           additionalCode: "window.createjs = {};",
         },
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "CreateJS Boilerplate",
+      inject: true,
+      template: path.join(htmlPath, "/index.html"),
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
+      filename: "[name].[contenthash:8].css",
+      chunkFilename: "[name].[contenthash:8].chunk.css",
     }),
     new ESLintPlugin({
       extensions: [".js", ".ts"],
@@ -59,8 +70,8 @@ module.exports = {
   resolve: {
     extensions: [".js", ".ts"],
     alias: {
-      "@": rootPath,
-      "@createjs": path.resolve(rootPath, "createjs"),
+      "@": srcPath,
+      "@createjs": path.resolve(srcPath, "createjs"),
     },
   },
 };

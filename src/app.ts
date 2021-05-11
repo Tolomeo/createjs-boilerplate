@@ -1,14 +1,11 @@
 import createjs from "@createjs";
-import { createDOMStage, getDOMStage, handleResize } from "@/utils";
+import { getDOMStage, handleResize } from "@/utils";
 
 import { CONFIG } from "@/config";
 
 import "./styles.css";
 
 const init = () => {
-  const body = document.getElementsByTagName("body")[0];
-  body.append(createDOMStage());
-
   window.onload = () => {
     createjs.Ticker.framerate = CONFIG.framerate;
 
