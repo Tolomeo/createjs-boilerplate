@@ -2,10 +2,10 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 
-const shell = require("shelljs");
-const chalk = require("chalk");
 const path = require("path");
 const fs = require("fs");
+const shell = require("shelljs");
+const chalk = require("chalk");
 
 const rootDirectory = fs.realpathSync(process.cwd());
 const packageJson = path.join(rootDirectory, "package.json");
@@ -21,24 +21,25 @@ Even your future self will benefit from this.
 Have a look [here](https://github.com/othneildrew/Best-README-Template) for a nice starting template.
 `;
 
-// 1 Installing dependencies
-console.info(chalk.cyan(`Installing dependencies`));
-shell.exec(`yarn`);
-// 2. removing .git dir
+
+// 1. removing .git dir
 console.info(chalk.cyan(`Removing git directory at ${gitDirectory}`));
 shell.rm("-rf", gitDirectory);
-// 3. removing setup script
+// 2. removing setup script
 console.info(chalk.cyan(`Removing setup script file at ${setupScript}`));
 shell.rm(setupScript);
-// 4. overriding README
+// 3. overriding README
 console.info(chalk.cyan(`Writing readme file at ${readmeFile}`));
 shell.ShellString(readmeContent).to(readmeFile);
-// 5. Removing setup dependencies
+// 4. Removing setup dependencies
 console.info(chalk.cyan(`Removing setup dependencies`));
 const packageJsonContent = JSON.parse(shell.cat(packageJson).toString());
 delete packageJsonContent.scripts.setup;
 delete packageJsonContent.dependencies.shelljs;
+delete packageJsonContent.dependencies.chalk;
 shell.ShellString(JSON.stringify(packageJsonContent, null, 2)).to(packageJson);
+// 5. Installing dependencies
+console.info(chalk.cyan(`Installing dependencies`));
 shell.exec(`yarn`);
 // 6. initialising a new git project
 console.info(chalk.cyan(`Initialising new git project`));

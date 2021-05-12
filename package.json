@@ -13,9 +13,11 @@
     "lint:staged": "lint-staged",
     "test": "jest",
     "test:dev": "jest --watch",
+    "presetup": "yarn add shelljs chalk",
     "setup": "node ./scripts/setup.js"
   },
   "dependencies": {
+    "chalk": "^4.1.1",
     "createjs": "^1.0.1",
     "normalize.css": "^8.0.1",
     "shelljs": "^0.8.4"
@@ -24,7 +26,6 @@
     "@types/createjs": "^0.0.29",
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
-    "chalk": "^4.1.1",
     "css-loader": "^4.3.0",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
