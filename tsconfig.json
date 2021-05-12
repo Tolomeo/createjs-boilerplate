@@ -10,10 +10,6 @@
     "target": "es5",
     "allowJs": true,
     "esModuleInterop": true,
-    "paths": {
-      "@createjs": ["./src/createjs.ts"],
-      "@/*": ["./src/*"]
-    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.(spec|test).ts"]

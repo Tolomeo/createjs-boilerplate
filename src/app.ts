@@ -1,4 +1,3 @@
-import createjs from "@createjs";
 import config from "./config";
 import Game from "./game";
 import "./styles.css";

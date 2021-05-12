@@ -65,9 +65,5 @@ module.exports = {
   ],
   resolve: {
     extensions: [".js", ".ts"],
-    alias: {
-      "@": srcPath,
-      "@createjs": path.resolve(srcPath, "createjs"),
-    },
   },
 };
