@@ -34,6 +34,7 @@ shell.ShellString(readmeContent).to(readmeFile);
 // 4. Removing setup dependencies
 console.info(chalk.cyan(`Removing setup dependencies`));
 const packageJsonContent = JSON.parse(shell.cat(packageJson).toString());
+delete packageJsonContent.scripts.presetup;
 delete packageJsonContent.scripts.setup;
 delete packageJsonContent.dependencies.shelljs;
 delete packageJsonContent.dependencies.chalk;
