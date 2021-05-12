@@ -38,7 +38,7 @@ console.info(chalk.cyan(`Removing setup dependencies`));
 const packageJsonContent = JSON.parse(shell.cat(packageJson).toString());
 delete packageJsonContent.scripts.setup;
 delete packageJsonContent.dependencies.shelljs;
-shell.ShellString(JSON.stringify(packageJsonContent)).to(packageJson);
+shell.ShellString(JSON.stringify(packageJsonContent, null, 2)).to(packageJson);
 shell.exec(`yarn`);
 // 6. initialising a new git project
 console.info(chalk.cyan(`Initialising new git project`));
