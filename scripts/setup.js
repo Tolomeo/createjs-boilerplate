@@ -11,7 +11,7 @@ const fs = require("fs");
 const rootDirectory = fs.realpathSync(process.cwd());
 const gitDirectory = path.join(rootDirectory, ".vscode")
 const setupScript = path.resolve(rootDirectory, path.join("scripts", "setup.js"));
-const readMeFile = path.resolve(rootDirectory, "README.md");
+const readmeFile = path.resolve(rootDirectory, "README.md");
 const readmeContent = `
 # Project README
 
@@ -26,10 +26,11 @@ console.info(chalk.blueBright(`Removing git directory at ${gitDirectory}\n`));
 shell.rm("-rf", gitDirectory);
 // 2. removing setup script 
 console.info(chalk.blueBright(`Removing setup script file at ${setupScript}\n`));
-fs.unlinkSync(setupScript);
+shell.rm(setupScript);
 // 3. overriding README
-console.info(chalk.blueBright(`Writing readme file at ${readMeFile}\n`));
-fs.writeFileSync(readMeFile, readmeContent);
+console.info(chalk.blueBright(`Writing readme file at ${readmeFile}\n`));
+shell.ShellString(readmeContent).to(readmeFile);
+
 // 4. initialising a new git project
 // exec('git init && git add . && git commit -m "Initial commit"', (err) => {
 //   if (err) {
