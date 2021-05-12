@@ -24,6 +24,7 @@
     "@types/createjs": "^0.0.29",
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "chalk": "^4.1.1",
     "css-loader": "^4.3.0",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-typescript": "^12.3.1",

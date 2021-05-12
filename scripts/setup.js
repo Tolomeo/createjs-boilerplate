@@ -3,7 +3,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 const shell = require("shelljs");
-const { exec } = require("child_process");
+const chalk = require('chalk');
+// const { exec } = require("child_process");
 const path = require("path");
 const fs = require("fs");
 
@@ -21,10 +22,13 @@ Have a look [here](https://github.com/othneildrew/Best-README-Template) for a ni
 `;
 
 // 1. removing .git dir
+console.info(chalk.blueBright(`Removing git directory at ${gitDirectory}\n`));
 shell.rm("-rf", gitDirectory);
 // 2. removing setup script 
+console.info(chalk.blueBright(`Removing setup script file at ${setupScript}\n`));
 fs.unlinkSync(setupScript);
 // 3. overriding README
+console.info(chalk.blueBright(`Writing readme file at ${readMeFile}\n`));
 fs.writeFileSync(readMeFile, readmeContent);
 // 4. initialising a new git project
 // exec('git init && git add . && git commit -m "Initial commit"', (err) => {
@@ -34,3 +38,4 @@ fs.writeFileSync(readMeFile, readmeContent);
 
 //   console.log("Done. Enjoy!");
 // });
+console.info(chalk.green(`"Done. Enjoy!"\n`));
