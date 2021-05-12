@@ -8,8 +8,10 @@ const path = require("path");
 const fs = require("fs");
 
 const rootDirectory = fs.realpathSync(process.cwd());
-const scriptsDirectory = path.resolve(rootDirectory, "/scripts");
-const README_CONTENT = `
+const gitDirectory = path.join(rootDirectory, ".vscode")
+const setupScript = path.resolve(rootDirectory, path.join("scripts", "setup.js"));
+const readMeFile = path.resolve(rootDirectory, "README.md");
+const readmeContent = `
 # Project README
 
 It is nice to document properly your project here, so other developers won't struggle getting on board.
@@ -19,11 +21,11 @@ Have a look [here](https://github.com/othneildrew/Best-README-Template) for a ni
 `;
 
 // 1. removing .git dir
-shell.rm("-rf", path.join(rootDirectory, ".vscode"));
+shell.rm("-rf", gitDirectory);
 // 2. removing setup script 
-fs.unlinkSync(path.join(scriptsDirectory, "setup.js"));
+fs.unlinkSync(setupScript);
 // 3. overriding README
-fs.writeFileSync(path.join(rootDirectory, "README.md"), README_CONTENT);
+fs.writeFileSync(readMeFile, readmeContent);
 // 4. initialising a new git project
 // exec('git init && git add . && git commit -m "Initial commit"', (err) => {
 //   if (err) {
