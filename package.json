@@ -9,8 +9,7 @@
     "start": "webpack-dev-server --inline",
     "build": "webpack",
     "lint": "eslint -- .",
-    "lint:fix": "eslint --fix -- .",
-    "lint:staged": "lint-staged",
+    "format": "prettier --write",
     "test": "jest",
     "test:dev": "jest --watch",
     "presetup": "yarn add shelljs chalk",
@@ -53,16 +52,16 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "browserslist": "> 0.25%, not dead",
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint:staged",
+      "pre-commit": "lint-staged",
       "pre-push": "yarn lint"
     }
   },
   "lint-staged": {
     "*.{js,ts,json}": [
-      "yarn lint"
+      "yarn format",
+      "git add"
     ]
   }
 }
