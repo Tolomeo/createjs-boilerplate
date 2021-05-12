@@ -38,13 +38,13 @@ delete packageJsonContent.scripts.setup;
 delete packageJsonContent.dependencies.shelljs;
 delete packageJsonContent.dependencies.chalk;
 shell.ShellString(JSON.stringify(packageJsonContent, null, 2)).to(packageJson);
-// 5. Installing dependencies
-console.info(chalk.cyan(`Installing dependencies`));
-shell.exec(`yarn`);
-// 6. initialising a new git project
+// 5. Initialising a new git project
 console.info(chalk.cyan(`Initialising new git project`));
 shell.exec(`git init`);
 shell.exec(`git add .`);
 shell.exec(`git commit -m "Initial commit"`);
+// 6. Installing dependencies
+console.info(chalk.cyan(`Installing project dependencies`));
+shell.exec(`yarn`);
 // Done
 console.info(chalk.green(`Done. Enjoy!`));
