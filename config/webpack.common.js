@@ -11,6 +11,14 @@ module.exports = {
     createjs: path.join(paths.nodeModules, "/createjs/builds/createjs-2015.11.26.combined.js"),
     app: path.join(paths.src, "/index.ts"),
   },
+  output: {
+    path: paths.dist,
+    filename: "[name].[contenthash:8].js",
+    clean: true,
+  },
+  resolve: {
+    extensions: [".js", ".ts"],
+  },
   module: {
     rules: [
       { test: /\.ts$/, loader: "ts-loader", exclude: /node_modules/ },
@@ -48,7 +56,4 @@ module.exports = {
       eslintPath: require.resolve("eslint"),
     }),
   ],
-  resolve: {
-    extensions: [".js", ".ts"],
-  },
 };
