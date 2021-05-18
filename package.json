@@ -6,16 +6,16 @@
   "author": "Szymon Kabelis",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --inline",
-    "build": "webpack",
+    "prepare": "husky install",
+    "start": "webpack serve --env mode=development",
+    "build": "webpack --env mode=production",
     "lint": "eslint -- .",
     "lint:staged": "lint-staged",
     "format": "prettier --write",
     "test": "jest",
     "test:dev": "jest --watch",
     "presetup": "yarn add shelljs chalk",
-    "setup": "node ./scripts/setup.js",
-    "prepare": "husky install"
+    "setup": "node ./scripts/setup.js"
   },
   "dependencies": {
     "chalk": "^4.1.1",
@@ -28,6 +28,7 @@
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "css-loader": "^5.2.4",
+    "css-minimizer-webpack-plugin": "^3.0.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.3.0",
@@ -50,6 +51,7 @@
     "typescript": "^4.2.4",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   }
 }
