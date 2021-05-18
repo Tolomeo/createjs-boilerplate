@@ -14,7 +14,7 @@
     "format": "prettier --write",
     "test": "jest",
     "test:dev": "jest --watch",
-    "presetup": "yarn add shelljs chalk",
+    "presetup": "npm install shelljs chalk",
     "setup": "node ./scripts/setup.js"
   },
   "dependencies": {

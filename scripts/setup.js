@@ -48,7 +48,7 @@ shell.exec(`git commit -m "Initial commit"`);
 
 // 6. Installing dependencies
 console.info(chalk.cyan(`Installing project dependencies`));
-shell.exec(`yarn`);
+shell.exec(`npm intall`);
 
 // Done
 console.info(chalk.green(`Done. Enjoy!`));
