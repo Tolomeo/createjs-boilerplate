@@ -1,5 +1,5 @@
-const development = require("./config/webpack.development");
-const production = require("./config/webpack.production");
+const development = require("./.webpack/webpack.development");
+const production = require("./.webpack/webpack.production");
 
 const environment = {
   development,
