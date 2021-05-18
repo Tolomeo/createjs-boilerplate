@@ -13,5 +13,14 @@
     "import/prefer-default-export": "warn",
     "@typescript-eslint/ban-types": "off"
   },
+  "overrides": [
+    {
+      "files": ["scripts/*.js", "config/*.js"],
+      "rules": {
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "no-console": "off"
+      }
+    }
+  ],
   "ignorePatterns": ["node_modules", "dist"]
 }
