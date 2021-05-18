@@ -37,6 +37,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.join(paths.html, "/index.html"),
+      favicon: path.join(paths.html, "/favicon.ico"),
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash:8].css",
