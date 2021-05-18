@@ -48,7 +48,7 @@ shell.exec(`git commit -m "Initial commit"`);
 
 // 6. Installing dependencies
 console.info(chalk.cyan(`Installing project dependencies`));
-shell.exec(`npm intall`);
+shell.exec(`npm install`);
 
 // Done
 console.info(chalk.green(`Done. Enjoy!`));
