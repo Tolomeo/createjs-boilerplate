@@ -23,16 +23,16 @@ module.exports = {
       { test: /\.ts$/, loader: "ts-loader", exclude: /node_modules/ },
       { test: /\.js$/, loader: "source-map-loader" },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
         test: /node_modules(\/|\\)(createjs)(\/|\\).*\.js$/,
         loader: "imports-loader",
         options: {
           additionalCode: "window.createjs = {};",
         },
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|ico)$/i,

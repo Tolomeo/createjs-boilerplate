@@ -9,8 +9,5 @@ module.exports = merge(common, {
   devServer: {
     contentBase: paths.src,
     open: true,
-    stats: {
-      warnings: false,
-    },
   },
 });
