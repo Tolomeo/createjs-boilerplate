@@ -1,29 +1,41 @@
 # CreateJS boilerplate
 
-Use this boilerplate to quickly start a CreateJS project. I suggest pet project rather than commercial (it is not perfect :stuck_out_tongue:).
+Use this boilerplate to quickly start a [CreateJS](https://createjs.com/) project using Typescript and Webpack.
 
-Unfortunately CreateJS package is legacy so it expose createjs var to window. Maybe some day there will be new version :pray: .
+CreateJS still doesn't support ES modules and is therefore exposed as a global namespace `window.createjs`.
 
-## Getting started
+## Built With
 
-### 0. Make sure you have installed node and yarn
+- Of course, [CreateJS](https://createjs.com)
+- [Typescript](https://www.typescriptlang.org)
+- [Webpack](https://webpack.js.org)
+- [Jest](http://jestjs.io)
 
-### 1. Clone the repository
+## Getting Started
 
-`git clone https://github.com/szymkab/createjs-boilerplate.git my-project`
+### Prerequisites
 
-### 2. Enter you project
+- [Node](https://nodejs.dev/), version `12.x`
 
-`cd my-project`
+### Installation
 
-### 3. Fire setup script (it will remove git files, setup script and initialize new repository)
-
-`yarn setup`
-
-### 4. Install dependencies
-
-`yarn install`
-
-### 5. Start development
-
-`yarn start`
+1. Clone this repository
+   ```sh
+   git clone https://github.com/Tolomeo/createjs-boilerplate name-of-my-new-project
+   ```
+2. Enter you project directory
+   ```sh
+   cd name-of-my-new-project
+   ```
+3. Fire the setup script
+   ```sh
+   npm run setup
+   ```
+4. Start the project for development
+   ```sh
+   npm start
+   ```
+   or build the project for deployment
+   ```sh
+   npm run build
+   ```

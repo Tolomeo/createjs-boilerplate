@@ -1,9 +1,12 @@
 {
   "name": "createjs-boilerplate",
   "version": "1.0.0",
-  "main": "src/app.js",
-  "repository": "git@github.com:szymkab/createjs-boilerplate.git",
-  "author": "Szymon Kabelis",
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tolomeo/createjs-boilerplate"
+  },
+  "author": "Diego Frattini",
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
